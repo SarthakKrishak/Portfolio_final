@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroui/button": "^2.2.19",
+    "@tabler/icons": "^3.31.0",
     "@tabler/icons-react": "^3.31.0",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
@@ -22,6 +23,7 @@
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {

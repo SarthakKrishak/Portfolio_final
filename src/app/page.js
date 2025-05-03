@@ -1,36 +1,138 @@
+"use client"
+
 import { GridBackgroundDemo } from "@/components/GridBackgroundDemo";
 import NavbarDemo from "@/components/NavbarDemo";
 import { Cover } from "@/components/ui/cover";
 import Link from "next/link";
+import { FloatingDock } from "@/components/ui/floating-dock";
+import { FaLinkedinIn } from "react-icons/fa";
+import { PiXLogoFill } from "react-icons/pi";
+import { FiGithub } from "react-icons/fi";
+import { FaInstagram } from "react-icons/fa6";
+import { FlipWords } from "@/components/ui/flip-words";
+import { IoMdCloseCircle } from "react-icons/io";
+import { useEffect, useState } from "react";
+
 export default function Home() {
+  const [close, setClose] = useState(false);
+  const words1 = ["Next Js", "React Js", "Tailwind CSS", "Typescript"];
+  const words2 = ["Node Js", "Express Js", "Mongo DB", "Firebase"];
+  const links = [
+    {
+      title: "LinkedIn",
+      icon: (
+        <FaLinkedinIn className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://www.linkedin.com/in/sarthakkrishak/",
+    },
+    {
+      title: "GitHub",
+      icon: (
+        <FiGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://github.com/SarthakKrishak",
+    },
+    {
+      title: "Twitter",
+      icon: (
+        <PiXLogoFill className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://x.com/krishak_sarthak",
+    },
+    {
+      title: "Instagram",
+      icon: (
+        <FaInstagram className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://www.instagram.com/sarthak_krishak/",
+    },
+  ];
+  
+  useEffect(() => {
+    const isClosed = sessionStorage.getItem("bannerClosed");
+    if (isClosed) setClose(true);
+  }, []);
+  const handleClick = () => {
+    setClose(true);
+    sessionStorage.setItem("bannerClosed", "true");
+  }
+
   return (
     <div className="relative min-h-screen font-saasss lg:pl-[18vw] lg:pr-[18vw]">
+      {close ? <div className="bg-[#2171FF] text-white w-full py-3 items-center justify-between px-8 rounded-sm hidden">
+        <h1>Currently seeking <span className="font-medium">Summer 2025 Full-Stack Developer internship</span> opportunities! Open to remote or on-site positions. </h1>
+        <span className="text-lg"><IoMdCloseCircle /></span>
+      </div> : <div className="bg-[#2171FF] text-white w-full flex lg:py-3 items-center justify-between lg:px-8 rounded-sm">
+          <h1>Currently seeking <span className="font-medium">Summer 2025 Full-Stack Developer internship</span>  opportunities! Open to remote or on-site positions. </h1>
+        <span onClick={handleClick} className="lg:text-lg cursor-pointer"><IoMdCloseCircle /></span>
+      </div> }
       <div className="fixed inset-0 -z-10">
         <GridBackgroundDemo />
       </div>
-      <nav className="relative top-6 w-full bg-black rounded-lg border-slate-300">
+      
+      <nav className="relative lg:top-6 w-full bg-black rounded-lg border-slate-300">
         <NavbarDemo />
       </nav>
 
-      <main className="z-10 mt-40 w-full flex lg:flex-row">
-        {/* left side hero */}
-        <div className="w-[50%] flex flex-col items-center pl-6">
-          <div className="flex flex-col gap-3">
-            <h1 className="text-6xl font-semibold">Sarthak Krishak</h1>
-            <h1 className="lg:text-lg font-semibold max-w-7xl relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-              <span className="text-[#A1A1AA]">Innovating at</span>  <Link href={"/"}><Cover>Imaginum</Cover></Link>  <span className="text-[#A1A1AA]">and other</span> cool things.
-            </h1>
-            <p className="text-[#A1A1AA] lg:mt-4 lg:mr-8">Full-Stack Developer specializing in scalable SaaS products and web
-              applications. AWS Certified Cloud Practitioner and a sophomore at
-              VIT Vellore.
-              Passionate about designing seamless digital experiences with modern
-              web technologies. I focus on building high-performance, user-centric
-              solutions that drive impact and innovation.</p>
-          </div>
-        </div >
-        {/* right side hero */}
-        <div className="w-[50%] bg-yellow-300">
+      <main className="z-10 mt-40 w-full flex flex-col">
+        {/* Hero section */}
+        <div className="flex">
+          {/* left side hero */}
+          <div className="w-[50%] flex flex-col items-center lg:pl-12">
+            <div className="flex flex-col lg:gap-3">
+              <h1 className="lg:text-6xl font-semibold">Sarthak Krishak</h1>
+              <h1 className="lg:text-lg font-semibold max-w-7xl relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
+                <span className="text-[#A1A1AA]">Innovating at</span>{" "}
+                <Link href={"/"}>
+                  <Cover>Imaginum</Cover>
+                </Link>{" "}
+                <span className="text-[#A1A1AA]">| AWS Certified Engineer</span>
+              </h1>
+              <p className="text-[#A1A1AA] lg:mt-4 lg:mr-2">
+                <span className="text-white">Full-Stack Developer</span>{" "}
+                specializing in scalable SaaS products and web applications.
+                <span className="text-white">
+                  AWS Certified Cloud Practitioner
+                </span>{" "}
+                and a sophomore at VIT Vellore. Passionate about designing
+                seamless digital experiences with modern web technologies. I
+                focus on building high-performance, user-centric solutions that
+                drive impact and innovation.
+              </p>
 
+              <div className="font-normal text-neutral-600 dark:text-neutral-400 lg:mt-5 flex flex-col w-full">
+                <span className="text-white lg:text-xl">Specialized in</span>
+                <div className="flex w-full lg:mt-2">
+                  <h1 className="text-lg w-[55%]">
+                    Frontend : <FlipWords words={words1} />
+                  </h1>
+                  <h1 className="text-lg w-[45%]">
+                    Backend : <FlipWords words={words2} />
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* right side hero */}
+          <div className="w-[50%] object-cover flex flex-col items-center justify-center">
+            <img
+              src="/pic1.png"
+              width={320}
+              height={320}
+              className="rounded-md"
+            />
+            <div className="flex items-center justify-center w-full lg:mt-4">
+              <FloatingDock
+                mobileClassName="translate-y-20" // only for demo, remove for production
+                items={links}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Projects section */}
+        <div className="flex flex-col lg:pl-12 lg:mt-56">
+          <h1>Projects</h1>
         </div>
       </main>
       {/* Other page content here */}
