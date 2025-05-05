@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { FollowerPointerCard } from "@/components/ui/following-pointer";
 import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
 
 export default function Home() {
   const [close, setClose] = useState(false);
@@ -96,7 +97,7 @@ export default function Home() {
           <GridBackgroundDemo />
         </div>
         {/* navbar */}
-        <nav className="relative top-8 lg:top-6 w-full bg-black rounded-lg border-slate-300">
+        <nav className="relative top-8 lg:top-6 w-full bg-black rounded-lg">
           <NavbarDemo />
         </nav>
 
@@ -121,7 +122,7 @@ export default function Home() {
                     | AWS Certified Engineer
                   </span>
                 </h1>
-                <p className="text-[#A1A1AA] text-sm leading-6 lg:mt-4 lg:mr-2 mt-3">
+                <p className="text-[#A1A1AA] text-sm md:text-base leading-6 lg:mt-4 lg:mr-2 mt-3">
                   <span className="text-white">Full-Stack Developer</span>{" "}
                   specializing in scalable SaaS products and web applications.
                   <span className="text-white">
@@ -181,6 +182,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <Experience/>
           <Projects />
         </main>
       </div>

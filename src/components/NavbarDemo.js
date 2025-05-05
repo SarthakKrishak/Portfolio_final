@@ -38,7 +38,7 @@ const NavbarDemo = () => {
 
       {/* Mobile Dropdown Menu */}
       <div
-        className={`absolute top-full right-0 w-[45%] md:hidden bg-black text-white transition-all duration-500 ease-in-out z-40 ${clicked ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-5 pointer-events-none"
+        className={`absolute top-full right-0 w-[35%] rounded-lg outline-1 outline-gray-900 md:hidden bg-black text-white transition-all duration-500 ease-in-out z-40 ${clicked ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-5 pointer-events-none"
           }`}
       >
         <div className="flex flex-col items-center gap-4 py-4 text-sm">
