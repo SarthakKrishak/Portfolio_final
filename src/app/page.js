@@ -1,9 +1,7 @@
 "use client"
-
 import { GridBackgroundDemo } from "@/components/GridBackgroundDemo";
 import NavbarDemo from "@/components/NavbarDemo";
 import { Cover } from "@/components/ui/cover";
-import Link from "next/link";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { FaLinkedinIn } from "react-icons/fa";
 import { PiXLogoFill } from "react-icons/pi";
@@ -12,6 +10,10 @@ import { FaInstagram } from "react-icons/fa6";
 import { FlipWords } from "@/components/ui/flip-words";
 import { IoMdCloseCircle } from "react-icons/io";
 import { useEffect, useState } from "react";
+import { LinkPreview } from "@/components/ui/link-preview";
+
+import { FollowerPointerCard } from "@/components/ui/following-pointer";
+
 
 export default function Home() {
   const [close, setClose] = useState(false);
@@ -58,84 +60,117 @@ export default function Home() {
   }
 
   return (
-    <div className="relative min-h-screen font-saasss lg:pl-[18vw] lg:pr-[18vw]">
-      {close ? <div className="bg-[#2171FF] text-white w-full py-3 items-center justify-between px-8 rounded-sm hidden">
+    <div className="relative min-h-screen font-saasss">
+      {close ? <div className="bg-[#2171FF] text-white w-full py-3 items-center justify-center px-8 rounded-sm hidden">
         <h1>Currently seeking <span className="font-medium">Summer 2025 Full-Stack Developer internship</span> opportunities! Open to remote or on-site positions. </h1>
         <span className="text-lg"><IoMdCloseCircle /></span>
-      </div> : <div className="bg-[#2171FF] text-white w-full flex lg:py-3 items-center justify-between lg:px-8 rounded-sm">
-          <h1>Currently seeking <span className="font-medium">Summer 2025 Full-Stack Developer internship</span>  opportunities! Open to remote or on-site positions. </h1>
+      </div> : <div className="bg-[#2171FF] text-white w-full flex lg:py-3 items-center justify-center lg:px-8 rounded-sm lg:gap-16">
+        <h1>Currently seeking <span className="font-medium">Summer 2025 Full-Stack Developer internship</span>  opportunities! Open to remote or on-site positions. </h1>
         <span onClick={handleClick} className="lg:text-lg cursor-pointer"><IoMdCloseCircle /></span>
-      </div> }
-      <div className="fixed inset-0 -z-10">
-        <GridBackgroundDemo />
-      </div>
-      
-      <nav className="relative lg:top-6 w-full bg-black rounded-lg border-slate-300">
-        <NavbarDemo />
-      </nav>
+      </div>}
+      <div className="relative min-h-screen font-saasss lg:pl-[18vw] lg:pr-[18vw]">
+        <div className="fixed inset-0 -z-10">
+          <GridBackgroundDemo />
+        </div>
 
-      <main className="z-10 mt-40 w-full flex flex-col">
-        {/* Hero section */}
-        <div className="flex">
-          {/* left side hero */}
-          <div className="w-[50%] flex flex-col items-center lg:pl-12">
-            <div className="flex flex-col lg:gap-3">
-              <h1 className="lg:text-6xl font-semibold">Sarthak Krishak</h1>
-              <h1 className="lg:text-lg font-semibold max-w-7xl relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-                <span className="text-[#A1A1AA]">Innovating at</span>{" "}
-                <Link href={"/"}>
-                  <Cover>Imaginum</Cover>
-                </Link>{" "}
-                <span className="text-[#A1A1AA]">| AWS Certified Engineer</span>
-              </h1>
-              <p className="text-[#A1A1AA] lg:mt-4 lg:mr-2">
-                <span className="text-white">Full-Stack Developer</span>{" "}
-                specializing in scalable SaaS products and web applications.
-                <span className="text-white">
-                  AWS Certified Cloud Practitioner
-                </span>{" "}
-                and a sophomore at VIT Vellore. Passionate about designing
-                seamless digital experiences with modern web technologies. I
-                focus on building high-performance, user-centric solutions that
-                drive impact and innovation.
-              </p>
+        <nav className="relative lg:top-6 w-full bg-black rounded-lg border-slate-300">
+          <NavbarDemo />
+        </nav>
 
-              <div className="font-normal text-neutral-600 dark:text-neutral-400 lg:mt-5 flex flex-col w-full">
-                <span className="text-white lg:text-xl">Specialized in</span>
-                <div className="flex w-full lg:mt-2">
-                  <h1 className="text-lg w-[55%]">
-                    Frontend : <FlipWords words={words1} />
-                  </h1>
-                  <h1 className="text-lg w-[45%]">
-                    Backend : <FlipWords words={words2} />
-                  </h1>
+        <main className="z-10 mt-40 w-full flex flex-col">
+          {/* Hero section */}
+          <div className="flex">
+            {/* left side hero */}
+            <div className="w-[50%] flex flex-col items-center lg:pl-12">
+              <div className="flex flex-col lg:gap-3">
+                <h1 className="lg:text-6xl font-semibold">Sarthak Krishak</h1>
+                <h1 className="lg:text-lg font-semibold max-w-7xl relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
+                  <span className="text-[#A1A1AA]">Innovating at</span>{" "}
+                  <LinkPreview url="https://www.csedvit.com/" className="font-bold">
+                    <Cover>Imaginum</Cover>
+                  </LinkPreview>
+                  <span className="text-[#A1A1AA]">| AWS Certified Engineer</span>
+                </h1>
+                <p className="text-[#A1A1AA] lg:mt-4 lg:mr-2">
+                  <span className="text-white">Full-Stack Developer</span>{" "}
+                  specializing in scalable SaaS products and web applications.
+                  <span className="text-white">
+                    AWS Certified Cloud Practitioner
+                  </span>{" "}
+                  and a sophomore at VIT Vellore. Passionate about designing
+                  seamless digital experiences with modern web technologies. I
+                  focus on building high-performance, user-centric solutions that
+                  drive impact and innovation.
+                </p>
+
+                <div className="font-normal text-neutral-600 dark:text-neutral-400 lg:mt-5 flex flex-col w-full">
+                  <span className="text-white lg:text-xl">Specialized in</span>
+                  <div className="flex w-full lg:mt-2">
+                    <h1 className="text-lg w-[55%]">
+                      Frontend : <FlipWords words={words1} />
+                    </h1>
+                    <h1 className="text-lg w-[45%]">
+                      Backend : <FlipWords words={words2} />
+                    </h1>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          {/* right side hero */}
-          <div className="w-[50%] object-cover flex flex-col items-center justify-center">
-            <img
-              src="/pic1.png"
-              width={320}
-              height={320}
-              className="rounded-md"
-            />
-            <div className="flex items-center justify-center w-full lg:mt-4">
-              <FloatingDock
-                mobileClassName="translate-y-20" // only for demo, remove for production
-                items={links}
-              />
+            {/* right side hero */}
+            <div className="w-[50%] object-cover flex flex-col items-center justify-center">
+              <FollowerPointerCard
+                title={
+                  <TitleComponent
+                    title={blogContent.author}
+                    avatar={blogContent.authorAvatar}
+                  />
+                }>
+                <img
+                  src="/pic1.png"
+                  width={320}
+                  height={320}
+                  className="rounded-lg"
+                />
+              </FollowerPointerCard>
+              
+              <div className="flex items-center justify-center w-full lg:mt-4">
+                <FloatingDock
+                  mobileClassName="translate-y-20" // only for demo, remove for production
+                  items={links}
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Projects section */}
-        <div className="flex flex-col lg:pl-12 lg:mt-56">
-          <h1>Projects</h1>
-        </div>
-      </main>
+          {/* Projects section */}
+          <div className="flex flex-col lg:pl-12 lg:mt-56">
+            <h1>Projects</h1>
+          </div>
+        </main>
+      </div>
+     
       {/* Other page content here */}
     </div>
   );
 }
+
+
+const blogContent = {
+  author: "Sarthak Krishak",
+  authorAvatar: "/manu.png",
+};
+
+const TitleComponent = ({
+  title,
+  avatar
+}) => (
+  <div className="flex items-center space-x-2">
+    <img
+      src={avatar}
+      height="20"
+      width="20"
+      alt="thumbnail"
+      className="rounded-full border-2 border-white" />
+    <p>{title}</p>
+  </div>
+);
